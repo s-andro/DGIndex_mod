@@ -28,6 +28,14 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
       
+    - name: Download and install Windows SDK
+      run: |
+        import subprocess
+        import urllib.request
+        urllib.request.urlretrieve("https://go.microsoft.com/fwlink/p/?LinkId=323507", "sdksetup.exe")
+        subprocess.run(["sdksetup.exe", "/q", "/norestart", "/features", "OptionId.WindowsDesktopSoftwareDevelopmentKit", "OptionId.NetFxSoftwareDevelopmentKit"], check=True, capture_output=True)
+      shell: python
+      
     - name: NASM
       uses: ilammy/setup-nasm@v1.3.0
       with:
