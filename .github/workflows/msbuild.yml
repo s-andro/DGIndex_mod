@@ -40,7 +40,7 @@ jobs:
       uses: ilammy/setup-nasm@v1.3.0
       with:
         from-source: false
-        platform: win64
+        platform: win32
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
@@ -51,5 +51,5 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.0
       with:
-        name: build-win64
-        path: Build
+        name: DGIndex_mod_win32
+        path: Release
